@@ -17,7 +17,6 @@ class Solution {
         List<Integer>l=new ArrayList<>();
         for(int i:h){
             l.add(i);
-            System.out.println(i);
         }
         int count=0;
         while(count<k){
