@@ -17,6 +17,7 @@ class Solution {
         List<Integer>l=new ArrayList<>();
         for(int i:h){
             l.add(i);
+            System.out.println(i);
         }
         int count=0;
         while(count<k){
@@ -27,10 +28,10 @@ class Solution {
                     max=m.get(l.get(i));
                     idx=i;
                 }
-                arr[count]=l.get(idx);
-                count++;
-                l.remove(l.get(idx));
             }
+            arr[count]=l.get(idx);
+            count++;
+            l.remove(l.get(idx));
         }
         return arr;
     }
