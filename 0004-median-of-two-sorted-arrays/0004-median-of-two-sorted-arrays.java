@@ -12,7 +12,8 @@ class Solution {
         Arrays.sort(nums3);
         int x=nums3.length/2;
         if(nums3.length%2==0){
-            return ((double)nums3[x]+(double)nums3[x-1])/2;
+            double res=(double)nums3[x]+(double)nums3[x-1];
+            return res/2;
         }
         return (double)nums3[x];
     }
