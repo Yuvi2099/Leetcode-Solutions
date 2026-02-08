@@ -3,13 +3,30 @@ class Solution {
         int m=nums1.length;
         int n=nums2.length;
         int[] nums3=new int[m+n];
-        for(int i=0;i<m;i++){
-            nums3[i]=nums1[i];
+        for(int i=0,j=0,k=0;true;){
+            if(i<m && j<n){
+                if(nums1[i]<nums2[j]){
+                    nums3[k]=nums1[i];
+                    i++;
+                }
+                else{
+                    nums3[k]=nums2[j];
+                    j++;
+                }
+            }
+            else if(i<m){
+                nums3[k]=nums1[i];
+                i++;
+            }
+            else if(j<n){
+                nums3[k]=nums2[j];
+                j++;
+            }
+            else{
+                break;
+            }
+            k++;
         }
-        for(int i=0;i<n;i++){
-            nums3[m+i]=nums2[i];
-        }
-        Arrays.sort(nums3);
         int x=nums3.length/2;
         if(nums3.length%2==0){
             double res=(double)nums3[x]+(double)nums3[x-1];
