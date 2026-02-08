@@ -3,7 +3,6 @@ class Solution {
         int m=nums1.length;
         int n=nums2.length;
         int[] nums3=new int[m+n];
-        double res=0;
         for(int i=0;i<m;i++){
             nums3[i]=nums1[i];
         }
@@ -11,17 +10,10 @@ class Solution {
             nums3[m+i]=nums2[i];
         }
         Arrays.sort(nums3);
+        int x=nums3.length/2;
         if(nums3.length%2==0){
-            int o=nums3.length/2;
-            double a=(double)nums3[o-1];
-            double b=(double)nums3[o];
-            res=(a+b)/2;
+            return ((double)nums3[x]+(double)nums3[x-1])/2;
         }
-        else{
-            int o=(nums3.length/2);
-            double a=(double)nums3[o];
-            res=a;
-        }
-        return res;
+        return (double)nums3[x];
     }
 }
