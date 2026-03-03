@@ -2,20 +2,11 @@ class Solution {
     public int[] topKFrequent(int[] nums, int k) {
         HashMap<Integer,Integer>m=new HashMap<>();
         for(int i:nums){
-            if(m.containsKey(i)){
-                m.replace(i,m.get(i)+1);
-            }
-            else{
-                m.put(i,1);
-            }
+            m.put(i,m.getOrDefault(i,0)+1);
         }
         int[]arr=new int[k];
-        HashSet<Integer>h=new HashSet<>();
-        for(int i:nums){
-            h.add(i);
-        }
         List<Integer>l=new ArrayList<>();
-        for(int i:h){
+        for(int i:m.keySet()){
             l.add(i);
         }
         int count=0;
