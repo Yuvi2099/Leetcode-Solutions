@@ -15,8 +15,7 @@ class Solution {
                 count++;
                 l++;
                 r--;
-                k--;
-                k--;
+                k=k-2;
             }
             else if(people[l]+people[r]>limit){
                 count++;
@@ -27,8 +26,7 @@ class Solution {
                 count++;
                 l++;
                 r--;
-                k--;
-                k--;
+                k=k-2;
             }
         }
         return count;
