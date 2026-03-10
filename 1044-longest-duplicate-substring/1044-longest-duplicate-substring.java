@@ -1,8 +1,6 @@
-// We use binary seach and Rabin-Karp algorithm
 class Solution {
     private String searchDuplicate(String s, int length) {
         if(length == 0) return "";
-
         long mod = (1L << 32) - 1;
         long base = 26;
         long hash = 0;
@@ -16,7 +14,6 @@ class Solution {
         for(int i = length; i < s.length(); i++){
             hash = (hash * base - (s.charAt(i - length) - 'a') * pow % mod + mod) % mod;
             hash = (hash + (s.charAt(i) - 'a')) % mod;
-        
             if(seen.containsKey(hash)){
                 for(int start : seen.get(hash)){
                     if(s.substring(start, start + length).equals(s.substring(i - length + 1, i + 1))){
@@ -28,7 +25,6 @@ class Solution {
         }
         return "";
     }
-
     public String longestDupSubstring(String s) {
         int l = 1, r = s.length();
         String result = "";
