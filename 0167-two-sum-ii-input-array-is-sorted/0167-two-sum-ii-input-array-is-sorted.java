@@ -10,7 +10,7 @@ class Solution {
             if(m.containsKey(x)){
                 res[0]=i+1;
                 res[1]=m.get(x);
-                break;
+                return res;
             }
         }
         return res;
