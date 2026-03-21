@@ -3,6 +3,7 @@ class Solution {
         if(s.length()==0) return 0;
         int l=0,r=s.length();
         while(l<r && s.charAt(l)==' ') l++;
+        if(l==r) return 0;
         int sign=1;
         if(l<r && s.charAt(l)=='+' || s.charAt(l)=='-'){
             if(s.charAt(l)=='-') sign=-1;
