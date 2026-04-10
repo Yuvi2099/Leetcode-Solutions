@@ -1,19 +1,19 @@
 class Solution {
     public int bagOfTokensScore(int[] tokens, int power) {
-        int score=0,max=0;
-        int l=0;int r=tokens.length-1;
         Arrays.sort(tokens);
+        int score=0,max=0;
+        int l=0,r=tokens.length-1;
         while(l<=r){
             if(power>=tokens[l]){
                 power-=tokens[l];
-                score++;
                 l++;
+                score++;
                 max=Math.max(max,score);
             }
             else if(score>=1){
                 power+=tokens[r];
-                score--;
                 r--;
+                score--;
             }
             else return max;
         }
