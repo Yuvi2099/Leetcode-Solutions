@@ -11,13 +11,11 @@ class Solution {
         }
         return true;
     }
-    private boolean check(String s,int l,int r){
-        while(l<r){
-            if(s.charAt(l)!=s.charAt(r)){
-                return false;
-            }
-            l++;
-            r--;
+    private boolean check(String s,int left,int right){
+        while(left<right){
+            if(s.charAt(left)!=s.charAt(right)) return false;
+            left++;
+            right--;
         }
         return true;
     }
