@@ -14,10 +14,10 @@ class Solution {
     }
     private boolean valid(int[]freq){
         int c=0;
-        for(int i:freq){
-            if(i==0) continue;
-            if(c==0) c=i;
-            else if(i!=c) return false;
+        for(int k:freq){
+            if(k==0) continue;
+            if(c==0) c=k;
+            else if(k!=c) return false;
         }
         return true;
     }
