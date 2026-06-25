@@ -1,9 +1,10 @@
 class Solution {
     public int getCommon(int[] nums1, int[] nums2) {
-        HashSet<Integer>h=new HashSet<>();
-        for(int i:nums1) h.add(i);
-        for(int i=0;i<nums2.length;i++){
-            if(h.contains(nums2[i])) return nums2[i];
+        int l=0,r=0;
+        while(l<nums1.length && r<nums2.length){
+            if(nums1[l]==nums2[r]) return nums1[l];
+            else if(nums1[l]>nums2[r]) r++;
+            else l++;
         }
         return -1;
     }
