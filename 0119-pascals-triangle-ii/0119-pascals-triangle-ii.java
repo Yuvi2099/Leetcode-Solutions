@@ -6,7 +6,6 @@ class Solution {
             for(int j=0;j<=i;j++){
                 if(j==0 || j==i) l.add(1);
                 else l.add(res.get(i-1).get(j-1)+res.get(i-1).get(j));
-                if(j==rowIndex) return l;
             }
             res.add(l);
         }
