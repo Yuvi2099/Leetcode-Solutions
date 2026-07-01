@@ -14,9 +14,7 @@ class Solution {
             else k++;
         } 
         StringBuilder sb=new StringBuilder();
-        for(int x:m.keySet()){
-            sb.append(m.get(x));
-        }
+        for(int x:m.keySet()) sb.append(m.get(x));
         return sb.toString();
     }
 }
