@@ -6,10 +6,10 @@ class Solution {
         String check="aeiouAEIOU";
         int count=0;
         for(char ch:s1.toCharArray()){
-            if(check.contains(String.valueOf(ch))) count++;
+            if(check.indexOf(ch)!=-1) count++;
         }
         for(char ch:s2.toCharArray()){
-            if(check.contains(String.valueOf(ch))) count--;
+            if(check.indexOf(ch)!=-1) count--;
         }
         return count==0;
     }
