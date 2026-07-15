@@ -7,9 +7,9 @@ class Solution {
         }
         int d=Math.min(odd,even);
         int gcd=1;
-        for(int i=2;i<=d;i++){
-            if(odd%i==0 && even%i==0) gcd=i;
+        for(int i=d;i>=2;i--){
+            if(odd%i==0 && even%i==0) return i;
         }
-        return gcd;
+        return 1;
     }
 }
