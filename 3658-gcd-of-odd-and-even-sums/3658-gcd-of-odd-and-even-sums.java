@@ -1,18 +1,14 @@
 class Solution {
     public int gcdOfOddEvenSums(int n) {
         int odd=0,even=0;
-        int i=1,j=2;
-        while(n!=0){
-            odd+=i;
-            even+=j;
-            i+=2;
-            j+=2;
-            n--;
+        for(int i=1;i<=n;i++){
+            odd+=i*2-1;
+            even+=i*2;
         }
         int d=Math.min(odd,even);
         int gcd=1;
-        for(int p=2;p<=d;p++){
-            if(odd%p==0 && even%p==0) gcd=p;
+        for(int i=2;i<=d;i++){
+            if(odd%i==0 && even%i==0) gcd=i;
         }
         return gcd;
     }
