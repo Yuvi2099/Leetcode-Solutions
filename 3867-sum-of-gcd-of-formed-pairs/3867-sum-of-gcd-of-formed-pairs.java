@@ -9,12 +9,9 @@ class Solution {
         Collections.sort(l);
         long sum=0;
         if(l.size()%2==1) l.remove(l.size()/2);
-        while(l.size()!=0){
-            long a=l.get(0);
-            long b=l.get(l.size()-1);
-            sum+=gcd(a,b);
-            l.remove(0);
-            l.remove(l.size()-1);
+        int n=l.size();
+        for(int i=0;i<n/2;i++){
+            sum+=gcd(l.get(i),l.get(n-1-i));
         }
         return sum;
     }
