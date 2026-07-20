@@ -23,9 +23,11 @@ class Solution {
         return sum;
     }
     private boolean isPrime(long x){
-        if(x==0 || x==1) return false;
+        if(x<2) return false;
+        if(x%2==0) return x==2;
+        if(x%3==0) return x==3;
         int n=(int)Math.sqrt(x);
-        for(int i=2;i<=n;i++){
+        for(int i=5;i<=n;i++){
             if(x%i==0 && x!=i) return false;
         }
         return true;
