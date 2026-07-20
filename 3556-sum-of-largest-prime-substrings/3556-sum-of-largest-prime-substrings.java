@@ -1,24 +1,18 @@
 class Solution {
     public long sumOfLargestPrimes(String s) {
-        List<Long>l=new ArrayList<>();
+        HashSet<Long>h=new HashSet<>();
         for(int i=0;i<s.length();i++){
-            StringBuilder sb=new StringBuilder();
-            for(int j=i;j<s.length();j++){
-                sb.append(s.charAt(j));
-                long x=Long.parseLong(sb.toString());
-                if(!l.contains(x)) l.add(x);
+            long num=0;
+            for(int j=i;j<s.length() && j-i<18;j++){
+                num=num*10+(s.charAt(j)-'0');
+                h.add(num);
             }
         }
-        Collections.sort(l);
-        int idx=l.size()-1;
-        int k=3;
+        PriorityQueue<Long>pq=new PriorityQueue<>(Collections.reverseOrder());
+        for(long x:h) if(isPrime(x)) pq.add(x);
         long sum=0;
-        while(idx>=0 && k>0){
-            if(isPrime(l.get(idx))){
-                sum+=l.get(idx);
-                k--;
-            }
-            idx--;
+        for(int i=0;i<3 && !pq.isEmpty();i++){
+            sum+=pq.poll();
         }
         return sum;
     }
