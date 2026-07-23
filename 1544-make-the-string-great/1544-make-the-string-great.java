@@ -5,8 +5,8 @@ class Solution {
             if(!st.isEmpty() && Math.abs(ch-st.peek())==32) st.pop();
             else st.push(ch);
         }
-        String x="";
-        for(char ch:st) x+=ch;
-        return x;
+        StringBuilder sb=new StringBuilder();
+        for(char ch:st) sb.append(ch);
+        return sb.toString();
     }
 }
