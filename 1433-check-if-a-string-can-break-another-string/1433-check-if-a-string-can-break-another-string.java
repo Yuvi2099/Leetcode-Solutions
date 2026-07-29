@@ -6,16 +6,14 @@ class Solution {
         Arrays.sort(brr);
         boolean ans=true;
         for(int i=0;i<arr.length;i++){
-            if(arr[i]<=brr[i]) continue;
-            else{
+            if(arr[i]>brr[i]){
                 ans=false;
                 break;
             }
         }
         if(ans) return ans;
         for(int i=0;i<arr.length;i++){
-            if(brr[i]<=arr[i]) continue;
-            else return false;
+            if(brr[i]>arr[i]) return false;
         }
         return true;
     }
