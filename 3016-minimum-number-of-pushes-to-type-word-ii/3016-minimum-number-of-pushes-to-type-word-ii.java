@@ -1,29 +1,16 @@
 class Solution {
     public int minimumPushes(String word) {
-        HashSet<Character>h=new HashSet<>();
-        for(char ch:word.toCharArray()) h.add(ch);
-        int len=h.size();
-        HashMap<Character,Integer>m=new HashMap<>();
-        for(char ch:word.toCharArray()) m.put(ch,m.getOrDefault(ch,0)+1);
-        List<Character>l=new ArrayList<>();
-        while(l.size()!=len){
-            int max=0;
-            char sh='a';
-            for(char ch:m.keySet()){
-                if(!l.contains(ch) && m.get(ch)>=max){
-                    max=m.get(ch);
-                    sh=ch;
-                }
-            }
-            l.add(sh);
-        }
-        int ops=0;
-        for(int i=0;i<word.length();i++){
-            int idx=l.indexOf(word.charAt(i));
-            if(idx<8) ops++;
-            else if(idx>7 && idx<16) ops+=2;
-            else if(idx>15 && idx<24) ops+=3;
-            else ops+=4;
+        int[]freq=new int[26];
+        for(char ch:word.toCharArray()) freq[ch-'a']++;
+        Arrays.sort(freq);
+        int ops=0,idx=0;
+        for(int i=25;i>=0;i--){
+            if(freq[i]==0) break;
+            if(idx<8) ops+=freq[i];
+            else if(idx<16) ops+=freq[i]*2;
+            else if(idx<24) ops+=freq[i]*3;
+            else ops+=freq[i]*4;
+            idx++;
         }
         return ops;
     }
