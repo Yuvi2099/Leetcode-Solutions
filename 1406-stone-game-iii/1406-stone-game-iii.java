@@ -1,21 +1,14 @@
 class Solution {
-    int n;
     public String stoneGameIII(int[] s) {
-        n=s.length;
+        int n=s.length;
         int[]dp=new int[n+1];
-        Arrays.fill(dp,-1);
-        int res=Integer.MIN_VALUE;
-        res=solve(s,0,dp);
-        if(res>0) return "Alice";
-        else if(res<0) return "Bob";
+        for(int i=n-1;i>=0;i--){
+            dp[i]=s[i]-dp[i+1];
+            if(i+2<=n) dp[i]=Math.max(dp[i],s[i]+s[i+1]-dp[i+2]);
+            if(i+3<=n) dp[i]=Math.max(dp[i],s[i]+s[i+1]+s[i+2]-dp[i+3]);
+        }
+        if(dp[0]>0) return "Alice";
+        else if(dp[0]<0) return "Bob";
         return "Tie";
-    }
-    private int solve(int[] s, int i, int[] dp){
-        if(i>=n) return 0;
-        if(dp[i]!=-1) return dp[i];
-        int res=s[i]-solve(s,i+1,dp);
-        if(i+1<n) res=Math.max(res,s[i]+s[i+1]-solve(s,i+2,dp));
-        if(i+2<n) res=Math.max(res,s[i]+s[i+1]+s[i+2]-solve(s,i+3,dp));
-        return dp[i]=res;
     }
 }
