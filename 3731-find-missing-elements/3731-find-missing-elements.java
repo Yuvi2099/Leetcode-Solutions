@@ -10,9 +10,7 @@ class Solution {
         }
         List<Integer>l=new ArrayList<>();
         for(int i=min;i<=max;i++){
-            if(h.contains(i)==false){
-                l.add(i);
-            }
+            if(!h.contains(i)) l.add(i);
         }
         return l;
     }
