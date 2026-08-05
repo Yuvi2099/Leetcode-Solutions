@@ -1,19 +1,17 @@
 class Solution {
     public List<Integer> partitionLabels(String s) {
-        HashMap<Character,Integer>m=new HashMap<>();
-        for(int i=s.length()-1;i>=0;i--){
-            if(!m.containsKey(s.charAt(i))) m.put(s.charAt(i),i);
-        }
-        List<Integer>l=new ArrayList<>();
-        int start=0,max=Integer.MIN_VALUE;
+        int[]freq=new int[26];
+        for(int i=0;i<s.length();i++) freq[s.charAt(i)-'a']=i;
+        List<Integer>list=new ArrayList<>();
+        int l=0,r=0;
         for(int i=0;i<s.length();i++){
             char ch=s.charAt(i);
-            max=Math.max(max,m.get(ch));
-            if(max==i){
-                l.add(max-start+1);
-                start=i+1;
+            r=Math.max(r,freq[ch-'a']);
+            if(r==i){
+                list.add(r-l+1);
+                l=i+1;
             }
         }
-        return l;
+        return list;
     }
 }
