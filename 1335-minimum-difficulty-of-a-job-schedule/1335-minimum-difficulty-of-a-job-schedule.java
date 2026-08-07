@@ -3,23 +3,25 @@ class Solution {
         int n=job.length;
         if(n<d) return -1;
         int[][]dp=new int[n][d+1];
-        for(int[]x:dp) Arrays.fill(x,-1);
-        return solve(job,n,0,d,dp);
-    }
-    private int solve(int[] job, int n, int idx, int d, int[][]dp){
-        if(d==1){
-            int maxD=0;
-            for(int i=idx;i<n;i++) maxD=Math.max(maxD,job[i]);
-            return maxD;
+        
+        int[]arr=new int[n];
+        arr[n-1]=job[n-1];
+        for(int i=n-2;i>=0;i--){
+            arr[i]=Math.max(job[i],arr[i+1]);
         }
-        if(dp[idx][d]!=-1) return dp[idx][d];
-        int maxD=0;
-        int ans=Integer.MAX_VALUE;
-        for(int i=idx;i<=n-d;i++){
-            maxD=Math.max(maxD,job[i]);
-            int res=maxD+solve(job,n,i+1,d-1,dp);
-            ans=Math.min(ans,res);
+        for(int i=0;i<n;i++) dp[i][1]=arr[i];
+
+        for(int days=2;days<=d;days++){
+            for(int i=0;i<=n-days;i++){
+                int maxD=0;
+                int res=Integer.MAX_VALUE;
+                for(int j=i;j<=n-days;j++){
+                    maxD=Math.max(maxD,job[j]);
+                    res=Math.min(res,maxD+dp[j+1][days-1]);
+                }
+                dp[i][days]=res;
+            }
         }
-        return dp[idx][d]=ans;
+        return dp[0][d];
     }
 }
