@@ -1,19 +1,14 @@
 class Solution {
     public boolean winnerSquareGame(int n) {
         int[]dp=new int[n+1];
-        Arrays.fill(dp,-1);
-        return solveForAlice(n,dp);
-    }
-    private boolean solveForAlice(int n, int[]dp){
-        if(n==0) return false;
-        if(dp[n]!=-1) return dp[n]==1;
-        for(int i=1;i*i<=n;i++){
-            if(!solveForAlice(n-i*i,dp)){
-                dp[n]=1;
-                return true;
+        for(int i=0;i<n+1;i++){
+            for(int j=1;j*j<=i;j++){
+                if(dp[i-j*j]==0){
+                    dp[i]=1;
+                    break;
+                }
             }
         }
-        dp[n]=0;
-        return false;
+        return dp[n]==1;
     }
 }
