@@ -2,11 +2,14 @@ class Solution {
     public int largestInteger(int[] nums, int k) {
         int n=nums.length;
         int[]freq=new int[51];
-        for(int i:nums) freq[i]++;
-        int max=-1;
-        for(int i=0;i<n;i++){
-            if(k==n || (freq[nums[i]]==1 && (k==1 || i==0 || i==n-1))) max=Math.max(max,nums[i]);
+        for(int i=0;i<=n-k;i++){
+            HashSet<Integer>h=new HashSet<>();
+            for(int j=i;j<i+k;j++) h.add(nums[j]); 
+            for(int x:h) freq[x]++;
         }
-        return max;
+        for(int i=50;i>=0;i--){
+            if(freq[i]==1) return i;
+        }
+        return -1;
     }
 }
