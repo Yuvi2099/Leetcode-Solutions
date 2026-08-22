@@ -7,17 +7,15 @@ class Solution {
                 nums[i+1]=0;
             }
         }
-        List<Integer>l=new ArrayList<>();
-        List<Integer>z=new ArrayList<>();
-        for(int i:nums){
-            if(i==0) z.add(i);
-            else l.add(i);
+        int idx=0;
+        for(int i=0;i<n;i++){
+            if(nums[i]!=0){
+                int temp=nums[idx];
+                nums[idx]=nums[i];
+                nums[i]=temp;
+                idx++;
+            }
         }
-        l.addAll(z);
-        int[]arr=new int[l.size()];
-        for(int i=0;i<l.size();i++){
-            arr[i]=l.get(i);
-        }
-        return arr;
+        return nums;
     }
 }
