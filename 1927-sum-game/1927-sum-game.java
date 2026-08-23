@@ -17,7 +17,7 @@ class Solution {
         int count=c1+c2;
         if(count%2!=0) return true;
         int diff=lsum-rsum;
-        int change=c2-c1;
-        return diff!=(change*9)/2;
+        int dx=c2-c1;
+        return diff!=(dx*9)/2;
     }
 }
