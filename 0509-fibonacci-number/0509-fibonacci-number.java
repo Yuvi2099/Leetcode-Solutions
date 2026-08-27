@@ -1,14 +1,12 @@
 class Solution {
     public int fib(int n) {
+        int[]dp=new int[n+1];
+        Arrays.fill(dp,-1);
+        return F(n,dp);
+    }
+    private int F(int n, int[]dp){
         if(n<=1) return n;
-        int a=0,b=1,c=1;
-        int count=2;
-        while(count!=n){
-            a=b;
-            b=c;
-            c=a+b;
-            count++;
-        }
-        return c;
+        if(dp[n]!=-1) return dp[n];
+        return dp[n]=F(n-1,dp)+F(n-2,dp);
     }
 }
