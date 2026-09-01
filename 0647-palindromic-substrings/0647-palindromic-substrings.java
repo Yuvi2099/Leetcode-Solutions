@@ -1,11 +1,14 @@
 class Solution {
     public int countSubstrings(String s) {
+        int n=s.length();
         int count=0;
-        for(int i=0;i<s.length();i++){
-            for(int j=i;j<s.length();j++){
-                String a=s.substring(i,j+1);
-                String b=new StringBuilder(a).reverse().toString();
-                if(a.equals(b)) count++;
+        for(int i=0;i<2*n-1;i++){
+            int l=i/2;
+            int r=l+i%2;
+            while(l>=0 && r<n && s.charAt(l)==s.charAt(r)){
+                count++;
+                l--;
+                r++;
             }
         }
         return count;
