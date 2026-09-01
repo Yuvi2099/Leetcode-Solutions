@@ -5,10 +5,8 @@ class Solution {
             m.put(x,m.getOrDefault(x,0)+1);
         }
         int count=0;
-        String t="";
         for(int i=0;i<s.length();i++){
-            char ch=s.charAt(i);
-            t+=ch;
+            String t=s.substring(0,i+1);
             if(m.containsKey(t)) count+=m.get(t);
         }
         return count;
