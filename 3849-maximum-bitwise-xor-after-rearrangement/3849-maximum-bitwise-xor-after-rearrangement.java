@@ -29,12 +29,12 @@ class Solution {
             }
         }
         String r=sb.toString();
-        sb.setLength(0);
+        StringBuilder tb=new StringBuilder();
         for(int i=0;i<s.length();i++){
             int x=s.charAt(i)-'0';
             int y=r.charAt(i)-'0';
-            sb.append(x^y);
+            tb.append(x^y);
         }
-        return sb.toString();
+        return tb.toString();
     }
 }
