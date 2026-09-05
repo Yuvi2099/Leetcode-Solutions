@@ -1,30 +1,30 @@
 class Solution {
     public String maximumXor(String s, String t) {
-        int[]f=new int[2];
+        int a=0,b=0;
         for(char ch:t.toCharArray()){
-            if(ch=='0') f[0]++;
-            else f[1]++;
+            if(ch=='0') a++;
+            else b++;
         }
         StringBuilder sb=new StringBuilder();
         for(int i=0;i<s.length();i++){
             if(s.charAt(i)=='0'){
-                if(f[1]>0){
+                if(b>0){
                     sb.append("1");
-                    f[1]--;
+                    b--;
                 }
                 else{
                     sb.append("0");
-                    f[0]--;
+                    a--;
                 }
             }
             else{
-                if(f[0]>0){
+                if(a>0){
                     sb.append("0");
-                    f[0]--;
+                    a--;
                 }
                 else{
                     sb.append("1");
-                    f[1]--;
+                    b--;
                 }
             }
         }
