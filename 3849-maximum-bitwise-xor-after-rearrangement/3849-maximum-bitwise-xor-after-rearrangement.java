@@ -19,22 +19,15 @@ class Solution {
             }
             else{
                 if(a>0){
-                    sb.append("0");
+                    sb.append("1");
                     a--;
                 }
                 else{
-                    sb.append("1");
+                    sb.append("0");
                     b--;
                 }
             }
         }
-        String r=sb.toString();
-        StringBuilder tb=new StringBuilder();
-        for(int i=0;i<s.length();i++){
-            int x=s.charAt(i)-'0';
-            int y=r.charAt(i)-'0';
-            tb.append(x^y);
-        }
-        return tb.toString();
+        return sb.toString();
     }
 }
