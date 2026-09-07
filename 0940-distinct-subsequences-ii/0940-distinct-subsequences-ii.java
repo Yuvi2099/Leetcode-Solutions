@@ -1,0 +1,18 @@
+class Solution {
+    public int distinctSubseqII(String s) {
+        int n=s.length();
+        int mod=(int)1e9+7;
+        int[]dp=new int[n];
+        Arrays.fill(dp,1);
+        int count=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<i;j++){
+                if(s.charAt(i)!=s.charAt(j)){
+                    dp[i]=(int)((dp[i]+(long)dp[j])%mod);
+                }
+            }
+            count=(int)((count+(long)dp[i])%mod);
+        }
+        return count;
+    }
+}
